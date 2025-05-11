@@ -141,12 +141,13 @@ const AdminTimetableTab = () => {
     if (!selectedClass) return;
     
     try {
-      const response = await fetch(`/api/admin/timetable?id=${selectedClass._id}`, {
+      const response = await fetch('/api/admin/timetable', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          _id: selectedClass._id,
           ...formData,
           semester: parseInt(formData.semester)
         }),
