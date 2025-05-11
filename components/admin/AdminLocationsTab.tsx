@@ -150,12 +150,13 @@ const AdminLocationsTab = () => {
     if (!selectedLocation) return;
     
     try {
-      const response = await fetch(`/api/admin/locations?id=${selectedLocation._id}`, {
+      const response = await fetch('/api/admin/locations', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          _id: selectedLocation._id,
           ...formData,
           type: locationType,
           capacity: formData.capacity ? parseInt(formData.capacity) : undefined
