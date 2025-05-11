@@ -133,12 +133,15 @@ const AdminUpdatesTab = () => {
     if (!selectedUpdate) return;
     
     try {
-      const response = await fetch(`/api/admin/updates?id=${selectedUpdate._id}`, {
+      const response = await fetch('/api/admin/updates', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          _id: selectedUpdate._id,
+          ...formData
+        }),
       });
 
       if (response.ok) {
