@@ -146,12 +146,13 @@ const AdminTeachersTab = () => {
     try {
       const subjectsArray = formData.subjects.split(',').map(subject => subject.trim());
       
-      const response = await fetch(`/api/admin/teachers?id=${selectedTeacher._id}`, {
+      const response = await fetch('/api/admin/teachers', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          _id: selectedTeacher._id,
           ...formData,
           subjects: subjectsArray
         }),
